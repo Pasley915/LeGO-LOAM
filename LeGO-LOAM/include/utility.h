@@ -155,7 +155,22 @@ struct by_value{
     }
 };
 
+/*
+    * A point cloud type that has "ring" channel
+    */
+struct PointXYZIR
+{
+    PCL_ADD_POINT4D
+    PCL_ADD_INTENSITY;
+    uint16_t ring;
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+} EIGEN_ALIGN16;
 
+POINT_CLOUD_REGISTER_POINT_STRUCT (PointXYZIR,  
+                                   (float, x, x) (float, y, y)
+                                   (float, z, z) (float, intensity, intensity)
+                                   (uint16_t, ring, ring)
+)
 
 /*
     * A point cloud type that has 6D pose info ([x,y,z,roll,pitch,yaw] intensity is time stamp)
